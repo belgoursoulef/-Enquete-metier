@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Découverte des Domaines : 5 métiers, 5 pros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#EDEEEA;
+  --ink:#14181F;
+  --mut:#566070;
+  --c:#6FA8FF;
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  font:400 1.0625rem/1.7 'Source Serif 4',Georgia,serif;
+  background:var(--bg);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,button,.ui {
+  font-family:Archivo,'Helvetica Neue',Arial,sans-serif;
+}
+
+button,a {
+  font:inherit;
+  color:inherit;
+}
+
+:focus-visible {
+  outline:3px solid var(--ink);
+  outline-offset:3px;
+}
+
+.wrap {
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* ===== EN-TÊTE ===== */
+.hero {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:32px;
+  padding:64px 24px 48px;
+}
+
+.hero h1 {
+  font-size:clamp(2.7rem,8.5vw,6.4rem);
+  font-weight:800;
+  font-stretch:125%;
+  line-height:.95;
+  letter-spacing:-.02em;
+}
+
+.hero p {
+  margin-top:24px;
+  max-width:52ch;
+  font-size:1.2rem;
+  color:var(--mut);
+}
+
+.bundle {
+  display:flex;
+  align-items:flex-end;
+  gap:7px;
+  flex:none;
+}
+
+.bundle i {
+  width:16px;
+  background:var(--c);
+}
+
+.bundle i:nth-child(1) {
+  height:120px;
+  --c:#6FA8FF;
+}
+
+.bundle i:nth-child(2) {
+  height:168px;
+  --c:#B79CFF;
+}
+
+.bundle i:nth-child(3) {
+  height:96px;
+  --c:#5ED08A;
+}
+
+.bundle i:nth-child(4) {
+  height:144px;
+  --c:#FF9A3C;
+}
+
+.bundle i:nth-child(5) {
+  height:112px;
+  --c:#F5D547;
+}
+
+/* ===== LISTE DES MÉTIERS ET FICHE ===== */
+.explorer {
+  display:grid;
+  grid-template-columns:300px minmax(0,1fr);
+  gap:32px;
+  align-items:start;
+  padding-bottom:72px;
+}
+
+.picks {
+  position:sticky;
+  top:20px;
+  display:grid;
+  gap:8px;
+}
+
+.pick {
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:baseline;
+  gap:0 12px;
+  text-align:left;
+  padding:14px 16px 14px 20px;
+  border:0;
+  border-left:14px solid var(--c);
+  background:#fff;
+  cursor:pointer;
+  transition:background .15s,padding .15s;
+}
+
+.pick b {
+  font-weight:700;
+  font-size:1.02rem;
+  line-height:1.25;
+}
+
+.pick em {
+  font-style:italic;
+  font-size:.9rem;
+  color:var(--mut);
+}
+
+.pick span {
+  grid-column:1/-1;
+  font-size:.85rem;
+  color:var(--mut);
+  font-family:Archivo,sans-serif;
+}
+
+.pick:hover {
+  padding-left:26px;
+}
+
+.pick[aria-pressed=true] {
+  background:var(--c);
+  padding-left:26px;
+}
+
+.pick[aria-pressed=true] em,.pick[aria-pressed=true] span {
+  color:var(--ink);
+}
+
+/* ===== FICHE D’UN MÉTIER ===== */
+.sheet {
+  background:#fff;
+  scroll-margin-top:16px;
+  min-height:560px;
+}
+
+.head {
+  background:var(--c);
+  padding:36px 40px 32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+}
+
+#ic svg {
+  width:84px;
+  height:84px;
+  display:block;
+  fill:none;
+  stroke:var(--ink);
+  stroke-width:3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.ph {
+  width:200px;
+  height:200px;
+  object-fit:cover;
+  display:block;
+  margin-bottom:24px;
+}
+
+.btn {
+  border:0;
+  cursor:pointer;
+}
+
+/* ===== GRILLE D’ENTRETIEN (fenêtre) ===== */
+dialog {
+  width:min(1040px,94vw);
+  max-height:92vh;
+  padding:0;
+  border:0;
+  background:#fff;
+  color:var(--ink);
+  overflow:auto;
+}
+
+dialog::backdrop {
+  background:rgba(20,24,31,.65);
+}
+
+.dh {
+  position:sticky;
+  top:0;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:18px 32px;
+  background:var(--ink);
+  color:#fff;
+}
+
+.dh h2 {
+  font-size:1.5rem;
+  font-weight:800;
+  font-stretch:112%;
+}
+
+.dh button {
+  padding:10px 18px;
+  border:0;
+  background:#F5D547;
+  color:var(--ink);
+  font-weight:700;
+  cursor:pointer;
+}
+
+.dbody {
+  padding:28px 32px 40px;
+}
+
+.legend {
+  display:grid;
+  gap:10px;
+  padding:18px 20px;
+  background:var(--bg);
+  margin-bottom:12px;
+  font-size:.98rem;
+}
+
+.bd {
+  display:inline-block;
+  margin-right:8px;
+  padding:2px 9px;
+  font:600 .78rem Archivo,sans-serif;
+  white-space:nowrap;
+}
+
+.bd.irl {
+  background:var(--ink);
+  color:#fff;
+}
+
+.bd.web {
+  border:2px solid var(--ink);
+}
+
+.q {
+  padding:32px 0;
+  border-top:1px solid #E0E2DC;
+}
+
+.q:first-child {
+  border-top:0;
+}
+
+.qn {
+  font:800 .9rem Archivo,sans-serif;
+  color:var(--mut);
+}
+
+.q h3 {
+  font-size:1.35rem;
+  font-weight:700;
+  line-height:1.3;
+  margin:4px 0 6px;
+}
+
+.q .obj {
+  font-size:.95rem;
+  color:var(--mut);
+  margin-bottom:18px;
+}
+
+.ans-grid {
+  display:grid;
+  gap:16px;
+  grid-template-columns:1fr 1fr;
+}
+
+.ans {
+  padding:16px 18px;
+  border-left:6px solid var(--c);
+  background:#FAFAF8;
+}
+
+.ah {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px 0;
+  margin-bottom:6px;
+}
+
+.ah b {
+  font:700 1rem Archivo,sans-serif;
+  margin-right:10px;
+}
+
+.ans p {
+  font-size:1rem;
+  line-height:1.55;
+}
+
+.ans blockquote {
+  margin-top:10px;
+  padding-left:14px;
+  border-left:3px solid var(--ink);
+  font-style:italic;
+}
+
+.ans small,.ans cite {
+  display:block;
+  margin-top:8px;
+  font:.82rem Archivo,sans-serif;
+  color:var(--mut);
+  font-style:normal;
+}
+
+.ans a {
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.miss {
+  margin-top:14px;
+  font:.88rem Archivo,sans-serif;
+  color:var(--mut);
+}
+
+@media(max-width:900px) {
+  .ans-grid {
+    grid-template-columns:1fr;
+  }
+  .dh,.dbody {
+    padding-left:20px;
+    padding-right:20px;
+  }
+}
+
+.srcs {
+  margin-top:28px;
+  font:.9rem Archivo,sans-serif;
+  color:var(--mut);
+}
+
+.srcs a {
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.srcs a:hover {
+  background:var(--c);
+}
+
+.said {
+  margin-top:40px;
+}
+
+.said h4 {
+  font:700 1rem Archivo,sans-serif;
+  margin-bottom:16px;
+}
+
+.said .quote p {
+  font-size:1.3rem;
+}
+
+.said cite a {
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.mono {
+  width:120px;
+  height:120px;
+  background:var(--c);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font:800 2.6rem Archivo,sans-serif;
+  font-stretch:112%;
+  margin-bottom:24px;
+}
+
+.head h2 {
+  font-size:clamp(1.9rem,4.4vw,3rem);
+  font-weight:800;
+  font-stretch:112%;
+  line-height:1.05;
+  letter-spacing:-.01em;
+}
+
+.head p {
+  margin-top:8px;
+  font-family:Archivo,sans-serif;
+}
+
+.tabs {
+  display:flex;
+  gap:28px;
+  padding:0 40px;
+  border-bottom:1px solid #E0E2DC;
+  overflow-x:auto;
+}
+
+.tabs button {
+  padding:16px 0 12px;
+  border:0;
+  border-bottom:4px solid transparent;
+  background:none;
+  cursor:pointer;
+  color:var(--mut);
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.tabs button small {
+  font-weight:400;
+  margin-right:6px;
+}
+
+.tabs button:hover {
+  color:var(--ink);
+}
+
+.tabs button[aria-selected=true] {
+  color:var(--ink);
+  border-bottom-color:var(--c);
+}
+
+#content {
+  padding:36px 40px 44px;
+  transition:opacity .15s;
+}
+
+/* ===== CONTENU DES PAGES ===== */
+.pay {
+  font-family:Archivo,sans-serif;
+  padding-bottom:28px;
+  margin-bottom:30px;
+  border-bottom:1px solid #E0E2DC;
+}
+
+.pay strong {
+  display:inline;
+  font-size:clamp(2rem,5.5vw,3.2rem);
+  font-weight:800;
+  font-stretch:112%;
+  letter-spacing:-.02em;
+  line-height:1.3;
+  background:linear-gradient(transparent 58%,var(--c) 58%);
+  padding:0 4px;
+  margin-left:-4px;
+}
+
+.pay span {
+  display:block;
+  margin-top:10px;
+  color:var(--mut);
+  max-width:60ch;
+}
+
+.facts {
+  display:grid;
+  gap:32px 40px;
+  grid-template-columns:1fr 1fr;
+}
+
+.facts h3 {
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:6px;
+  padding-top:12px;
+  border-top:4px solid var(--c);
+  width:100%;
+}
+
+.facts p {
+  font-size:1.04rem;
+}
+
+.empty {
+  color:var(--mut);
+  font-style:italic;
+}
+
+.video {
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  background:var(--ink);
+  margin-bottom:36px;
+}
+
+.vbox { position: relative; margin-bottom: 14px; }
+.vsrc { padding-left: 0; border-left: 0; }
+.vplay { position: relative; display: block; width: 100%; aspect-ratio: 16/9; padding: 0; border: 0; background: var(--ink); cursor: pointer; overflow: hidden; }
+.vplay img { width: 100%; height: 100%; object-fit: cover; opacity: .85; transition: opacity .2s; }
+.vplay:hover img { opacity: 1; }
+.vplay span { position: absolute; inset: 0; margin: auto; width: 76px; height: 54px; display: grid; place-items: center; background: #FF0033; color: #fff; font-size: 1.5rem; border-radius: 14px; }
+
+.src {
+  padding-left:24px;
+  border-left:6px solid var(--c);
+}
+
+.src+.src {
+  margin-top:32px;
+}
+
+.src .kind {
+  font:600 .85rem Archivo,sans-serif;
+  color:var(--mut);
+}
+
+.src h3 {
+  font-size:1.2rem;
+  font-weight:700;
+  line-height:1.3;
+  margin:4px 0 8px;
+}
+
+.src h3 a {
+  text-decoration:underline;
+  text-decoration-thickness:3px;
+  text-decoration-color:var(--c);
+  text-underline-offset:4px;
+}
+
+.src h3 a:hover {
+  background:var(--c);
+}
+
+.src p {
+  font-size:1.04rem;
+}
+
+.src small {
+  display:block;
+  margin-top:8px;
+  font:.85rem Archivo,sans-serif;
+  color:var(--mut);
+}
+
+.vision .rl {
+  color:var(--mut);
+  margin:-6px 0 20px;
+  font-family:Archivo,sans-serif;
+}
+
+.vision p+p {
+  margin-top:14px;
+}
+
+.quote {
+  padding-left:24px;
+  border-left:6px solid var(--c);
+}
+
+.quote+.quote {
+  margin-top:36px;
+}
+
+.quote p {
+  font-size:1.35rem;
+  line-height:1.55;
+  font-style:italic;
+}
+
+.quote cite {
+  display:block;
+  margin-top:10px;
+  font:600 .9rem Archivo,sans-serif;
+  color:var(--mut);
+}
+
+.vision h3 {
+  font-size:1.5rem;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.vision p {
+  font-size:1.2rem;
+  line-height:1.7;
+  max-width:62ch;
+}
+
+/* ===== PAGE PRO ===== */
+.who {
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:28px;
+  align-items:center;
+  margin-bottom:40px;
+}
+
+.who img {
+  width:200px;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+
+.who h3 {
+  font-size:1.6rem;
+  font-weight:800;
+  font-stretch:112%;
+  line-height:1.15;
+}
+
+.who p {
+  margin-top:6px;
+  color:var(--mut);
+}
+
+.who a {
+  display:inline-block;
+  margin-top:14px;
+  font:600 .95rem Archivo,sans-serif;
+  padding:10px 16px;
+  background:var(--ink);
+  color:#fff;
+  text-decoration:none;
+}
+
+.who a:hover {
+  background:#2B3340;
+}
+
+.cols {
+  display:grid;
+  gap:40px;
+  grid-template-columns:1fr 1fr;
+}
+
+.cols h4 {
+  font:700 1rem Archivo,sans-serif;
+  margin-bottom:14px;
+}
+
+.steps {
+  list-style:none;
+  padding:0;
+  margin-left:7px;
+  border-left:4px solid var(--c);
+}
+
+.steps li {
+  position:relative;
+  padding:0 0 16px 24px;
+  line-height:1.4;
+}
+
+.steps li::before {
+  content:"";
+  position:absolute;
+  left:-12px;
+  top:5px;
+  width:20px;
+  height:12px;
+  background:var(--c);
+  border:3px solid #fff;
+  box-sizing:content-box;
+  margin-left:-3px;
+  display:none;
+}
+
+.steps li::after {
+  content:"";
+  position:absolute;
+  left:-4px;
+  top:.55em;
+  width:16px;
+  height:4px;
+  background:var(--c);
+}
+
+.list {
+  padding-left:20px;
+}
+
+.list li {
+  margin-bottom:8px;
+}
+
+.note {
+  margin-top:36px;
+  padding:20px 24px;
+  background:var(--bg);
+}
+
+/* ===== ANNEXE ET PIED DE PAGE ===== */
+.annex {
+  background:var(--ink);
+  color:#fff;
+  padding:44px 48px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:24px 48px;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:72px;
+}
+
+.annex h2 {
+  font-size:clamp(1.6rem,3.5vw,2.3rem);
+  font-weight:800;
+  font-stretch:112%;
+}
+
+.annex p {
+  margin-top:8px;
+  color:#B8C0CC;
+  max-width:50ch;
+}
+
+.btn {
+  display:inline-block;
+  padding:16px 28px;
+  background:#F5D547;
+  color:var(--ink);
+  font:700 1rem Archivo,sans-serif;
+  text-decoration:none;
+  transition:background .15s;
+}
+
+.btn:hover {
+  background:#fff;
+}
+
+.annex .btn:focus-visible {
+  outline-color:#fff;
+}
+
+footer {
+  padding:0 0 40px;
+  color:var(--mut);
+  font:.9rem Archivo,sans-serif;
+}
+
+@media(max-width:900px) {
+  #ic svg {
+    width:56px;
+    height:56px;
+  }
+  .hero {
+    padding-top:44px;
+  }
+  .bundle {
+    display:none;
+  }
+  .explorer {
+    grid-template-columns:1fr;
+  }
+  .picks {
+    position:static;
+  }
+  .head,#content {
+    padding-left:22px;
+    padding-right:22px;
+  }
+  .tabs {
+    padding:0 22px;
+  }
+  .facts,.cols {
+    grid-template-columns:1fr;
+  }
+  .who {
+    grid-template-columns:1fr;
+  }
+  .who img {
+    width:160px;
+    height:160px;
+  }
+  .annex {
+    padding:32px 24px;
+  }
+  .sheet {
+    min-height:0;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    transition:none!important;
+  }
+  html {
+    scroll-behavior:auto;
+  }
+}
+
+
+/* ===== NOUVEAUTÉS : puces, documents, schémas ===== */
+.stats { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.stats li { padding: 6px 14px; background: #fff; border-left: 8px solid var(--c); font: 600 .88rem Archivo, sans-serif; }
+.who .mono { width: 200px; height: 200px; margin: 0; font-size: 4rem; }
+
+/* Bloc "Documents" */
+.doc { padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid #E0E2DC; }
+.doc:last-child { border: 0; margin: 0; padding: 0; }
+.doc h3 { font: 800 1.4rem Archivo, sans-serif; font-stretch: 112%; margin-bottom: 6px; padding-top: 12px; border-top: 4px solid var(--c); }
+.doc > p { color: var(--mut); margin-bottom: 16px; max-width: 62ch; }
+.dl { display: inline-block; margin: 0 10px 10px 0; padding: 12px 20px; background: var(--ink); color: #fff; text-decoration: none; font: 600 .95rem Archivo, sans-serif; }
+.dl:hover { background: #2B3340; }
+.dl.alt { background: none; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.dl.alt:hover { background: var(--c); }
+.slot { padding: 22px 24px; border: 3px dashed var(--c); background: var(--bg); }
+.slot b { font: 700 1rem Archivo, sans-serif; }
+.slot p { margin-top: 4px; font-size: .95rem; color: var(--mut); }
+code { font: .85em ui-monospace, Menlo, Consolas, monospace; background: #fff; padding: 1px 6px; }
+audio { display: block; width: 100%; margin-top: 8px; }
+.doc ul { padding-left: 20px; }
+.doc li { margin-bottom: 6px; }
+.doc li a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Schémas montrés par le professionnel */
+.shows { display: grid; gap: 32px; }
+.shows figure { margin: 0; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.zoom { position: relative; display: block; padding: 0; border: 0; background: var(--bg); cursor: zoom-in; }
+.zoom img { display: block; width: 100%; height: auto; }
+.zoom::after { content: "Agrandir"; position: absolute; right: 8px; bottom: 8px; padding: 4px 10px; background: var(--ink); color: #fff; font: 600 .78rem Archivo, sans-serif; }
+.shows figcaption b { display: block; font: 700 1.15rem Archivo, sans-serif; margin-bottom: 6px; }
+#zoom { width: min(1400px, 96vw); }
+#zoom img { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) {
+  .shows figure { grid-template-columns: 1fr; }
+  .who .mono { width: 120px; height: 120px; font-size: 2.6rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="wrap hero">
+  <div>
+    <h1>Découverte des Domaines</h1>
+    <p>Exploration de l’écosystème IT à travers l’analyse de 5 métiers complémentaires et les témoignages de 5 professionnels.</p>
+    <ul class="stats" id="stats"></ul>
+  </div>
+  <div class="bundle" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+</header>
+
+<main class="wrap">
+  <div class="explorer">
+    <nav class="picks" id="picks" aria-label="Les 5 métiers"></nav>
+
+    <section class="sheet" id="sheet" aria-live="polite">
+      <div class="head"><div><h2 id="title"></h2><p id="who"></p></div><div id="ic" aria-hidden="true"></div></div>
+      <div class="tabs" role="tablist" aria-label="Pages du dossier">
+        <button role="tab" data-tab="synthese"><small>Page 1</small>Synthèse</button>
+        <button role="tab" data-tab="web"><small>Page 2</small>Web</button>
+        <button role="tab" data-tab="docs" hidden><small>Page 2</small>Documents</button>
+        <button role="tab" data-tab="pro"><small>Page 3</small>Pro</button>
+      </div>
+      <div id="content"></div>
+    </section>
+  </div>
+
+  <section class="annex">
+    <div>
+      <h2>Annexe 1 : grille d’entretien</h2>
+      <p>Les 10 questions posées aux professionnels, avec la réponse de chacun. Chaque réponse indique si elle vient d’un témoignage internet ou d’un entretien en personne.</p>
+    </div>
+    <button class="btn" id="open" type="button">Voir la grille d’entretien</button>
+  </section>
+  <dialog id="grille" aria-labelledby="gt">
+    <div class="dh"><h2 id="gt">Grille d’entretien</h2><button type="button" id="close">Fermer</button></div>
+    <div class="dbody">
+      <div class="legend">
+        <p><span class="bd irl">Entretien en personne</span> Maxime Heraut et Charlie Lefevre. Leurs réponses viennent de notes et d’une transcription d’entretien, reformulées.</p>
+        <p><span class="bd web">Témoignage internet</span> Octave Klaba, Arthur Mensch et Guillaume Poupard, d’après des interviews et articles. Les réponses sont reformulées, sauf les citations entre guillemets.</p>
+      </div>
+      <div id="qs"></div>
+    </div>
+  </dialog>
+
+  <dialog id="zoom" aria-labelledby="zcap">
+    <div class="dh"><h2 id="zcap">Schéma</h2><button type="button" id="zclose">Fermer</button></div>
+    <img id="zimg" alt="">
+  </dialog>
+</main>
+
+<footer><div class="wrap">© 2026 Enquête métier réalisé par BELGOUR Aicha Soulef</div></footer>
+
+<script>
+/* =====================================================================
+   1. PHOTOS : fichiers rangés dans assets/photos/
+   Pour changer une photo, remplacez le fichier ou modifiez le chemin.
+   ===================================================================== */
+const PHOTO  = "assets/photos/maxime-heraut.jpg";
+const PHOTO2 = "assets/photos/arthur-mensch.jpg";
+const PHOTO3 = "assets/photos/octave-klaba.jpg";
+const PHOTO4 = "assets/photos/guillaume-poupard.jpg";
+
+const F = (act,use,env,intl,cond) => [["Profession & Activités",act],["Utilité dans l’entreprise",use],["Environnement (collaborations)",env],["International",intl],["Conditions",cond]];
+const S = (k,t,s,u,h) => ({k,t,s,u,h});
+
+/* =====================================================================
+   2. DONNÉES DES 5 MÉTIERS (une entrée par carte)
+   Champs utiles : c couleur, t titre, n nom, r rôle, sal salaire, f synthèse,
+   web sources internet, steps/facts/quotes/note page Pro, docs page Documents.
+   ===================================================================== */
+const J = {
+  reseau:{c:"#6FA8FF",photo:PHOTO3,v:"Achemine",t:"Ingénieur Réseau",pro:"Pro 1",n:"Octave Klaba",r:"Fondateur et dirigeant d’OVHcloud",
+    sal:["35k€ – 70k€+","Salaire, de Junior à Senior / Architecte"],
+    f:F("Conception, déploiement et maintenance des infrastructures de communication (LAN, WAN, VPN, routeurs, switchs). Il assure que la donnée voyage vite et sans coupure.",
+      "C’est la colonne vertébrale. Sans réseau, aucun service informatique (interne ou externe) ne peut fonctionner ou communiquer.",
+      "Travaille étroitement avec la cybersécurité (firewalls), le système/DevOps, et les fournisseurs télécoms.",
+      "Fort potentiel, protocoles standardisés mondialement (Cisco, Juniper).",
+      "Travail de bureau, possibles astreintes (nuit/week-end)."),
+    web:[S("Article, novembre 2025","Octave Klaba reprend les rênes d’OVHcloud","Le fondateur reprend la direction générale de l’hébergeur et annonce vouloir rester au moins cinq ans pour mener son nouveau plan stratégique. Un point de vue sur la stratégie d’un géant français du cloud et des datacenters.","https://next.ink/209582/octave-klaba-reprend-les-renes-dovhcloud-je-suis-revenu-pour-au-minimum-cinq-ans/","Next"),
+      S("Interview","Octave Klaba (OVH) : « Au départ, je me suis inspiré de Free »","Il raconte les débuts de l’entreprise : des serveurs fabriqués maison, un système de refroidissement imaginé avec son père et la location de datacenters grâce à Free.","https://www.universfreebox.com/article/20733/Octave-Klaba-OVH-Au-depart-je-me-suis-inspire-de-Free/amp","Univers Freebox"),
+      S("Portrait","Octave Klaba, fondateur d’OVHcloud","Biographie : ingénieur formé à l’ICAM Lille, fondateur d’OVH en 1999, premier datacenter en 2002, et défenseur de la souveraineté numérique.","https://www.frenchweb.fr/octave-klaba","FrenchWeb")],
+    bio:["Né en 1975 en Pologne, il arrive à Roubaix en 1991 et suit des études d’ingénieur à l’ICAM Lille, tout en apprenant l’informatique en autodidacte.","Il fonde OVH en 1999 avec un prêt de ses parents. Le premier datacenter ouvre en 2002, puis l’entreprise s’internationalise.","En 2025, il redevient directeur général d’OVHcloud tout en restant président du conseil."]},
+  ml:{c:"#B79CFF",photo:PHOTO2,v:"Analyse",t:"Ingénieur Machine Learning",pro:"Pro 2",n:"Arthur Mensch",r:"PDG et cofondateur de Mistral AI",
+    sal:["42k€ – 90k€+","Salaire, de Junior à Lead ML"],
+    f:F("Conception, entraînement et déploiement de modèles d’intelligence artificielle pour résoudre des problèmes complexes (prédiction, classification, NLP).",
+      "Permet d’automatiser des prises de décision complexes, de créer de nouveaux produits innovants et d’optimiser les opérations grâce aux données.",
+      "Collaboration avec les Data Scientists, les Data Engineers, et le DevOps (MLOps) pour la mise en production.",
+      "Très forte demande mondiale, télétravail fréquent.",
+      "Haute stimulation intellectuelle, environnement R&D."),
+    web:[S("Vidéo, 76 min, avril 2025","HugoDécrypte : Ce que personne n’ose vous dire sur l’IA, avec Arthur Mensch","Longue interview du PDG de Mistral AI. Les thèmes : l’IA qui transforme le quotidien, une IA européenne et souveraine, l’emploi, les risques, l’open source face à l’IA fermée.","https://forums.futura-sciences.com/actualites/957079-lia-va-bouleverser-vie-voici.html","Résumé sur Futura-Sciences"),
+      S("Vidéo, février 2025","Arthur Mensch répond à vos questions sur l’intelligence artificielle","Réponses aux questions du public (danger de l’IA, remplacement de l’humain, artistes), à l’occasion du Sommet pour l’action sur l’IA à Paris.","https://www.brut.media/fr/videos/sciences-technologies/ia/arthur-mensch-repond-a-vos-questions-sur-lintelligence-artificielle","Brut"),
+      S("Interview","« On est Français et on va le rester »","Il explique que le marché du travail va profondément changer, avec de nombreux métiers de services largement modifiés dans les dix prochaines années, et plaide pour plus de financement de la recherche publique en IA.","https://www.publicsenat.fr/actualites/parlementaire/intelligence-artificielle-on-est-francais-et-on-va-le-rester-assure-arthur-mensch-cofondateur-de-mistral-ai","Public Sénat")],
+    bio:["Cofondateur et dirigeant de Mistral AI, startup française spécialisée dans l’intelligence artificielle générative.","Il défend une IA européenne maîtrisée par l’Europe, pour ne pas dépendre uniquement des géants américains ou chinois."]},
+  /* ---------- Pro 3 : Charlie Lefevre (carte verte) ---------- */
+  acces:{
+    c: "#5ED08A",                       // couleur de la carte
+    v: "Déploie",                       // verbe affiché sous le titre
+    t: "Chef de projet Réseau d’accès",
+    pro: "Pro 3",
+    n: "Charlie Lefevre",
+    r: "Chef de projet réseau d’accès très haut débit (domaine PERA), Orange",
+    // photo: "assets/photos/charlie-lefevre.jpg",   // décommentez après avoir déposé la photo
+    link: null,                         // lien LinkedIn : "https://www.linkedin.com/in/..."
+    tag: "Entretien réalisé en personne",
+    sal: ["≈ 50 k€", "Salaire brut annuel d’un profil confirmé, qu’il situe dans la fourchette intermédiaire. Il a débuté en 1998 à 65 % puis 80 % du SMIC (contrat de qualification)."],
+
+    // Page 1 : Synthèse
+    f: F(
+      "Il déploie les équipements du réseau d’accès très haut débit. Aujourd’hui, il remplace les anciens DSLAM (ADSL sur cuivre) par des OLT (fibre optique), migre les clients grand public et professionnels, et permet de raccorder les sites mobiles en très haut débit.",
+      "Faire bénéficier les clients du meilleur service : passer d’un ancien débit à l’ultra haut débit pour accéder à de nouveaux services.",
+      "En interne : les chargés d’affaires (études), le pôle ADR (routage), la GR (gestion des ressources, DNS et adresses IP) et le pilotage RR (démontage des anciens équipements). En externe : des prestataires d’installation comme Eiffage et CIRC, qu’il pilote en « chef d’orchestre ».",
+      "Pas d’opportunité à l’international selon lui.",
+      "Ambiance bienveillante, collègues souriants et beaucoup d’échanges. Par le passé : astreintes, travaux de nuit et déplacements dans le Nord-Pas-de-Calais et en Picardie."
+    ),
+
+    // Page 2 : Web (pas de source internet, tout vient de l’entretien)
+    web: [],
+    webNote: "Pour ce métier, la source est un entretien réalisé en personne avec un professionnel. Tout est sur la page Pro.",
+
+    // Page 3 : Pro
+    steps: [
+      "1995 à 1997 : service militaire dans les transmissions (chasseurs alpins, Varces)",
+      "1998 : technicien à France Télécom Câble (télévision par câble, décodeurs, Internet)",
+      "2005 : retour chez France Télécom, technicien d’intervention réseaux structurants (mobile, WDM, DSLAM, pylônes)",
+      "2011 : chargé d’affaires faisceaux hertziens",
+      "2015 : correspondant sécurité production et maintenance",
+      "2020 : chargé de location d’infrastructures tiers (fibre noire, conventions avec des opérateurs et collectivités)",
+      "Depuis un peu plus de 3 ans : chef de projet sur le domaine PERA"
+    ],
+    ft: "Ses missions chez Orange",
+    facts: [
+      "Remplacement des DSLAM ADSL par des OLT fibre",
+      "Pilotage des partenaires d’installation, dans les délais",
+      "Migration des clients grand public et professionnels vers la fibre",
+      "Raccordement des sites mobiles sur les OLT",
+      "Ancien pylôniste habilité",
+      "Outils cités sur son CV : OPUS, SERIA, PPDR, GéoReso, Livedoc"
+    ],
+    quotes: [
+      ["Je suis le chef d’orchestre", "Entretien en personne", null],
+      ["Poser des questions, être curieux, toujours être curieux !", "Entretien en personne", null]
+    ],
+    note: ["Son conseil", "S’intéresser aux réseaux, avec un S : mobile, fixe, WDM, faisceaux hertziens, satellite, collecte, cœur de réseau. Rester curieux et poser des questions."],
+
+    // Page 2 : Documents, remplace Web  (une clé absente = rien d’affiché ; null = emplacement vide)
+    docs: {
+      cv: "assets/cv/charlie-lefevre.pdf",
+      audio: "assets/audio/entretien-charlie.mp3",
+      show: [
+        { src: "assets/schemas/chaine-hd-apr.png",
+          title: "La chaîne du haut débit (périmètre APR)",
+          text: "Schéma daté de décembre 2013 qui empile les couches du réseau, de la boucle locale au backbone : accès, RTC, collecte (ATM, GE, RTGE), SDH, WDM et infrastructure, avec le POP et le RBCI à droite." },
+        { src: "assets/schemas/collecte-mpls.png",
+          title: "Qu’est-ce que la collecte MPLS ?",
+          text: "Schéma du cœur RBCI et de l’interconnexion internationale (source DERS/ADP, 16/01/2018). Il distingue les nœuds de concentration (NC), multiservice (NM), plateformes (NP), opérateurs (NO), régionaux (NR) et Internet (NI)." }
+      ],
+      links: [
+        // ["Texte du lien", "https://..."],
+      ]
+    }
+  },
+  cyber:{c:"#FF9A3C",photo:PHOTO4,v:"Protège",t:"Ingénieur Cybersécurité",pro:"Pro 4",n:"Guillaume Poupard",r:"Chief Trust Officer chez Orange, ancien directeur général de l’ANSSI",
+    sal:["38k€ – 80k€+","Salaire, de Junior à RSSI"],
+    f:F("Protection des systèmes, détection d’intrusions, tests de pénétration et gestion des incidents de sécurité.",
+      "Protège le capital immatériel (données, réputation, argent) contre les cyberattaques incessantes.",
+      "Collabore avec l’Ingénieur Réseau (firewalls), la direction juridique et tous les employés (sensibilisation).",
+      "Les menaces n’ont pas de frontières, expertise très recherchée à l’étranger.",
+      "Pression potentiellement forte (gestion de crise)."),
+    web:[S("Vidéo","[Interview] Guillaume Poupard nous parle Cybersécurité","Discussion directe et pratique sur les enjeux actuels de la cybersécurité avec l’ancien directeur de l’ANSSI.","https://www.youtube.com/watch?v=u2Vc1QCXuJc","YouTube"),
+      S("Interview","« Face aux menaces, il faut avoir une hygiène informatique »","Il distingue trois grandes menaces : la cybercriminalité, l’espionnage et la menace militaire. Son message : commencer par les bases, qui ne demandent pas de gros moyens.","https://lagazettefrance.fr/article/face-aux-menaces-il-faut-avoir-une-hygiene-informatique","La Gazette"),
+      S("Interview, 2019","« Nous avons un rôle d’autorité nationale et devons l’assumer »","Entretien aux Assises de la sécurité : le rôle de l’ANSSI, le Cybermoi/s et le cloud souverain européen face au Cloud Act américain.","https://www.clubic.com/antivirus-securite-informatique/cyberpolice/actualite-873129-guillaume-poupard-anssi-role-autorite-nationale-devons-assumer-interview.html","Clubic")],
+    bio:["Polytechnicien (promotion 92), docteur en cryptographie, il débute comme expert en cryptographie puis dirige la division cybersécurité de la DGA.","Directeur général de l’ANSSI à partir de 2014, il quitte l’agence après huit ans, passe par Docaposte, puis devient Chief Trust Officer chez Orange."]},
+  collecte:{c:"#F5D547",photo:PHOTO,v:"Raccorde",t:"Chef de projet Réseau de collecte",pro:"Pro 5",n:"Maxime Heraut",r:"Chef de projet Réseau de collecte (National), Orange",
+    sal:["35 – 39 k€","Salaire brut annuel. Une tranche supérieure de 42 à 46 k€ est aussi citée pour un niveau Bac+5."],
+    f:[["Profession & Activités","Chef de projet Réseau de collecte (National), avec un focus sur le Core 4G et la fourniture de liens. Il analyse le trafic réseau (extractions de données sur Excel, suivi des taux de saturation), gère le renouvellement et le dimensionnement des équipements, et prépare le budget 2027 à partir de projections prédictives."],
+      ["Formation","BTS Électrotechnique, Licence puis Master (Bac+5) en Systèmes de Communication à Valence."],
+      ["Environnement (collaborations)","Fait le lien entre les différents ADR au sein du pôle RR. Travaille avec Nokia, partenaire technique, via l’entité ISM - Tech Orange."],
+      ["Conditions","La charge de management est assez prenante : animer les équipes et coordonner les réunions d’activité du lundi. L’accent est mis sur l’exécution du cœur de métier, ce qui implique parfois de relancer avec insistance."]],
+    web:[], webNote:"Pour ce métier, la source est un entretien réalisé en personne avec un professionnel. Tout est sur la page Pro.",
+    link:"https://www.linkedin.com/in/heraut-maxime-b0565372/"}
+};
+
+Object.assign(J.reseau, {
+  r:"Fondateur d’OVHcloud, président-directeur général", link:"https://www.linkedin.com/in/octave-klaba-3a0b3632/", tag:"Source : interviews et articles publics",
+  steps:["1975 : naissance à Nowa Ruda, en Pologne","1991 : arrivée à Roubaix avec sa famille","Études d’ingénieur à l’ICAM Lille, informatique apprise en autodidacte","Un mois chez Alcatel, puis démission pour se lancer","1999 : création d’OVH avec 7 000 € prêtés par ses parents","2002 : ouverture du premier datacenter","Octobre 2021 : introduction en Bourse d’OVHcloud à Paris","Octobre 2025 : redevient PDG, près de sept ans après avoir quitté la direction opérationnelle"],
+  ft:"Repères",
+  facts:["OVHcloud a franchi le milliard d’euros de chiffre d’affaires en 2025 et compte environ 2 800 collaborateurs","Avec son père, il a mis au point un refroidissement des serveurs par l’eau pour réduire la facture d’énergie","Il prépare le plan stratégique 2026-2030 « Step Ahead »","Il défend la souveraineté numérique et la protection des données","Élu personnalité IT de l’année 2014 par les lecteurs du Monde Informatique"],
+  note:["Le lien avec le métier d’ingénieur réseau","OVHcloud construit et exploite ses propres datacenters : c’est un bon exemple de l’infrastructure réseau qui se cache derrière le cloud."],
+  srcs:[["Le Journal des Entreprises","https://www.lejournaldesentreprises.com/article/octave-klaba-reprend-les-renes-dovhcloud-2129211"],["FrenchWeb","https://www.frenchweb.fr/octave-klaba"],["Le Monde Informatique","https://www.lemondeinformatique.fr/actualites/lire-octave-klaba-pdg-d-ovh-personnalite-it-2014-pour-lmi-59657.html"]]
+});
+Object.assign(J.ml, {
+  link:"https://www.linkedin.com/in/arthur-mensch/?locale=fr", tag:"Source : interviews et articles publics",
+  steps:["17 juillet 1992 : naissance à Sèvres (Hauts-de-Seine)","Formation d’ingénieur à l’École polytechnique","Thèse à l’Inria (Université Paris-Saclay, 2018), puis recherche à l’Inria et à l’ENS","2020 à 2023 : chercheur chez Google DeepMind, à Paris","28 avril 2023 : cofondation de Mistral AI avec Guillaume Lample et Timothée Lacroix, il en prend la direction générale","Fin 2023 : levée de fonds de 385 millions d’euros","2024 : classé dans le Time100 AI"],
+  ft:"Repères",
+  facts:["Mistral AI publie des modèles ouverts, comme Mistral 7B","Il défend une IA européenne, pour que ces outils ne soient pas contrôlés par un petit nombre d’entreprises américaines ou chinoises","Il siège au comité du gouvernement sur l’IA","Guillaume Lample dirige la partie scientifique et Timothée Lacroix la partie technique de Mistral AI"],
+  note:["Le lien avec le métier d’ingénieur Machine Learning","Son parcours va de la recherche en apprentissage automatique à la création d’une entreprise qui entraîne et déploie des modèles de langage."],
+  srcs:[["Presse-citron","https://www.presse-citron.net/portrait-9-faits-sur-arthur-mensch-le-prodige-francais-de-lia-generative/"],["La Libre","https://www.lalibre.be/economie/entreprises-startup/2023/12/13/qui-est-arthur-mensch-lentrepreneur-qui-reve-de-batir-un-chatgpt-europeen-OZEXTFGV2ZGVJMEVTROBE6EFY4/"],["Wikipédia","https://en.wikipedia.org/wiki/Arthur_Mensch"]]
+});
+Object.assign(J.cyber, {
+  link:"https://www.linkedin.com/in/guillaume-poupard-3604531b5/", tag:"Source : interviews et articles publics",
+  steps:["École polytechnique (X92), ingénieur général de l’armement","Doctorat en cryptologie","Carrière auprès du ministère de la Défense et du Premier ministre, spécialisé en cybersécurité et cyberdéfense","2014 à 2022 : directeur général de l’ANSSI","Janvier 2023 : directeur général adjoint de Docaposte (groupe La Poste)","1er février 2026 : Chief Trust Officer du groupe Orange, rattaché à la directrice générale Christel Heydemann"],
+  ft:"Repères",
+  facts:["Chez Orange, il définit la stratégie de souveraineté et de confiance, avec Orange Business et Orange Cyberdefense","Il a participé à la création du Campus Cyber, à Paris La Défense","Il copréside le Conseil national de l’IA et du Numérique avec Anne Bouverot depuis juillet 2025"],
+  note:["Un lien avec Orange","Il travaille aujourd’hui dans le même groupe que Maxime Heraut et Charlie Lefevre, les professionnels interviewés en personne pour ce dossier."],
+  srcs:[["Communiqué d’Orange","https://www.orange.com/en/press-release/orange-appoints-guillaume-poupard-chief-trust-officer-to-accelerate-its-sovereignty-and-trust-strategy-414876"],["Clubic","https://www.clubic.com/actualite-591082-orange-recrute-une-pointure-francaise-de-la-cybersecurite-et-sa-mission-sera-o-combien-importante.html"],["Paris Peace Forum","https://parispeaceforum.org/?p=1435256"]]
+});
+Object.assign(J.collecte, {
+  docs: { cv: "assets/cv/maxime-heraut.pdf" },
+  tag:"Entretien réalisé en personne", ft:"Ses missions chez Orange",
+  steps:["BTS Électrotechnique","Licence en Systèmes de Communication","Master (Bac+5) en Systèmes de Communication, à Valence","Stage étudiant axé sur le domaine du mobile","Travail chez SFR","Embauche officielle chez Orange"],
+  facts:["Responsable des réseaux de collecte : Core 4G et fourniture de liens","Lien entre les différents ADR du pôle RR","Analyse du trafic et suivi des taux de saturation","Renouvellement et dimensionnement des équipements","Préparation du budget 2027","Échanges avec Nokia via l’entité ISM - Tech Orange"],
+  note:["Son approche des relations","Il souligne l’importance d’être gentil, de bien s’entendre avec les autres et de ne pas forcer les relations : les professionnels sont souvent amenés à se recroiser plus tard dans leur carrière."]
+});
+
+Object.assign(J.reseau, {quotes:[["Je suis revenu pour au minimum cinq ans","Next","https://next.ink/209582/octave-klaba-reprend-les-renes-dovhcloud-je-suis-revenu-pour-au-minimum-cinq-ans/"]]});
+Object.assign(J.ml, {quotes:[["On est Français et on va le rester","Public Sénat","https://www.publicsenat.fr/actualites/parlementaire/intelligence-artificielle-on-est-francais-et-on-va-le-rester-assure-arthur-mensch-cofondateur-de-mistral-ai"]]});
+Object.assign(J.cyber, {quotes:[["Nous avons un rôle d’autorité nationale et devons l’assumer","Clubic, 2019","https://www.clubic.com/antivirus-securite-informatique/cyberpolice/actualite-873129-guillaume-poupard-anssi-role-autorite-nationale-devons-assumer-interview.html"]]});
+/* ===== 3. ICÔNES (SVG) ===== */
+const IC = {
+ reseau:`<svg viewBox="0 0 64 64"><path d="M32 32 12 14M32 32l22-18M32 32 14 52M32 32l24 20"/><circle cx="32" cy="32" r="7"/><circle cx="12" cy="14" r="5"/><circle cx="54" cy="14" r="5"/><circle cx="14" cy="52" r="5"/><circle cx="56" cy="52" r="5"/></svg>`,
+ ml:`<svg viewBox="0 0 64 64"><path d="M12 20 32 12M12 20l20 20M12 44l20-32M12 44l20 8M32 12l20 8M32 32l20-12M32 32l20 24M32 52l20-8"/><circle cx="12" cy="20" r="5"/><circle cx="12" cy="44" r="5"/><circle cx="32" cy="12" r="5"/><circle cx="32" cy="32" r="5"/><circle cx="32" cy="52" r="5"/><circle cx="52" cy="20" r="5"/><circle cx="52" cy="44" r="5"/></svg>`,
+ acces:`<svg viewBox="0 0 64 64"><rect x="6" y="24" width="18" height="16"/><path d="M24 32h10M34 32l16-16M34 32h16M34 32l16 16"/><circle cx="54" cy="16" r="4"/><circle cx="54" cy="32" r="4"/><circle cx="54" cy="48" r="4"/></svg>`,
+ cyber:`<svg viewBox="0 0 64 64"><path d="M32 6 54 14v18c0 14-10 22-22 26C20 54 10 46 10 32V14z"/><path d="m21 32 8 8 14-16"/></svg>`,
+ collecte:`<svg viewBox="0 0 64 64"><circle cx="32" cy="18" r="3"/><path d="M22 8a14 14 0 0 0 0 20M42 8a14 14 0 0 1 0 20M32 21 22 58M32 21l10 37M25 44h14"/></svg>`
+};
+/* ===== 4. ÉTAT ===== */
+let job = "collecte", tab = "synthese";
+const $ = id => document.getElementById(id);
+const sheet = $("sheet"), content = $("content");
+
+/* ===== 5. GRILLE D’ENTRETIEN (questions, puis réponses par professionnel dans QA) ===== */
+const QS = [
+ ["Introduction","Pouvez-vous vous présenter brièvement ainsi que votre parcours professionnel ?","Briser la glace, comprendre le profil du professionnel."],
+ ["Activités et Rôle","Quelles sont vos principales missions et activités au quotidien ?","Définir les « Activités » du métier."],
+ ["Activités et Rôle","Selon vous, à quoi sert concrètement votre métier au sein de l’entreprise ? Quelle est sa valeur ajoutée ?","Comprendre « À quoi ça sert dans l’entreprise »."],
+ ["Environnement et Collaborations","Avec quels services ou quels métiers collaborez-vous le plus fréquemment (en interne et en externe) ?","Analyser l’environnement de travail : avec qui je collabore."],
+ ["Conditions et Responsabilités","Comment décririez-vous vos conditions de travail et quelles sont vos principales responsabilités ?","Cerner les « Conditions de travail » et les « Responsabilités »."],
+ ["Rémunération","Sans indiscrétion, quelle est la fourchette de salaire (ou le salaire moyen) pour un profil débutant, puis pour un profil confirmé dans ce métier ?","Obtenir des informations concrètes sur le « Salaire »."],
+ ["Évolution et International","Quelles sont les évolutions de carrière possibles après ce poste ? Le métier offre-t-il des opportunités à l’international ?","Valider « Évolution possible » et la dimension « International »."],
+ ["Vision et Évolutions du métier","Quelle est votre vision de ce métier aujourd’hui ? Comment les évolutions organisationnelles et technologiques l’ont-elles transformé ?","Comprendre sa vision du métier, des évolutions organisationnelles et technologiques."],
+ ["Passion et Motivation","Qu’est-ce qui vous passionne le plus dans votre métier aujourd’hui ?","Cerner ce qui le passionne dans son métier."],
+ ["Conclusion","Avez-vous un dernier conseil pour quelqu’un qui souhaiterait se lancer dans ce métier ?","Ouverture pour la conclusion du témoignage."]
+];
+const A = (t,l,u,q,ql,qu) => ({t,l,u,q,ql,qu});
+const U = {
+  fw:"https://www.frenchweb.fr/octave-klaba", fb:"https://www.universfreebox.com/article/20733/Octave-Klaba-OVH-Au-depart-je-me-suis-inspire-de-Free/amp", nx:"https://next.ink/209582/octave-klaba-reprend-les-renes-dovhcloud-je-suis-revenu-pour-au-minimum-cinq-ans/", jde:"https://www.lejournaldesentreprises.com/article/octave-klaba-reprend-les-renes-dovhcloud-2129211",
+  ps:"https://www.publicsenat.fr/actualites/parlementaire/intelligence-artificielle-on-est-francais-et-on-va-le-rester-assure-arthur-mensch-cofondateur-de-mistral-ai", pc:"https://www.presse-citron.net/portrait-9-faits-sur-arthur-mensch-le-prodige-francais-de-lia-generative/",
+  or:"https://www.orange.com/en/press-release/orange-appoints-guillaume-poupard-chief-trust-officer-to-accelerate-its-sovereignty-and-trust-strategy-414876", lg:"https://lagazettefrance.fr/article/face-aux-menaces-il-faut-avoir-une-hygiene-informatique", cl:"https://www.clubic.com/antivirus-securite-informatique/cyberpolice/actualite-873129-guillaume-poupard-anssi-role-autorite-nationale-devons-assumer-interview.html"
+};
+const QA = {
+ collecte:[A("BTS Électrotechnique, puis Licence et Master (Bac+5) en Systèmes de Communication à Valence. Stage étudiant dans le mobile, travail chez SFR, puis embauche officielle chez Orange."),
+  A("Chef de projet Réseau de collecte (National), centré sur le Core 4G et la fourniture de liens. Il analyse le trafic (extractions Excel, taux de saturation), gère le renouvellement et le dimensionnement des équipements, et prépare le budget 2027 avec des projections prédictives."),
+  0,
+  A("Il fait le lien entre les différents ADR du pôle RR et travaille avec Nokia, partenaire technique, via l’entité ISM - Tech Orange."),
+  A("La charge de management est assez prenante : animer les équipes et coordonner les réunions d’activité du lundi. L’accent est mis sur l’exécution du cœur de métier, ce qui implique parfois de relancer ses collègues avec insistance."),
+  A("Entre 35 et 39 k€ brut par an. Une tranche de 42 à 46 k€ est aussi citée pour un niveau Bac+5."),
+  0,0,0,
+  A("Être gentil, bien s’entendre avec les autres et ne pas forcer les relations, car on est souvent amené à se recroiser plus tard dans sa carrière.")],
+ reseau:[A("Né en Pologne, arrivé à Roubaix en 1991, il se forme à l’ICAM Lille et crée OVH en 1999 avec 7 000 € prêtés par ses parents.","FrenchWeb",U.fw,"Au départ, je me suis inspiré de Free","Univers Freebox",U.fb),
+  A("Il dirige OVHcloud depuis octobre 2025 (directeur général, en plus de la présidence du conseil) et pilote la stratégie de l’entreprise.","Next",U.nx),
+  A("Pour lui, un hébergeur de cloud doit défendre la souveraineté numérique et la protection des données.","FrenchWeb",U.fw),
+  A("Il dit ne pas être seul maître à bord : il travaille avec un conseil d’administration et des comités.","Next",U.nx),
+  A("Il cumule direction générale et présidence du conseil, dans une entreprise dont la famille Klaba détient 81,3 % du capital. Il la décrit comme une entreprise de valeurs, pas une dictature.","Next",U.nx),
+  0,
+  A("Fondateur puis dirigeant, il revient à la tête d’OVHcloud près de sept ans après avoir quitté la direction opérationnelle. L’entreprise est entrée en Bourse à Paris en 2021.","Le Journal des Entreprises",U.jde),
+  A("Il compte rester au moins cinq ans pour dérouler le nouveau plan stratégique et atteindre une croissance durable à deux chiffres.","Next",U.nx),
+  0,0],
+ ml:[A("Polytechnicien, docteur (thèse à l’Inria), chercheur chez Google DeepMind à Paris de 2020 à 2023, puis cofondateur de Mistral AI en avril 2023.","Presse-citron",U.pc),
+  A("Directeur général de Mistral AI : il fait grandir l’entreprise (50 salariés un an après sa création), lève des fonds et défend des logiciels ouverts que les clients peuvent personnaliser.","Public Sénat",U.ps),
+  A("Selon lui, l’IA va augmenter les humains et leur productivité, et transformer surtout les métiers de services.","Public Sénat",U.ps),
+  A("Il a fondé Mistral avec Timothée Lacroix et Guillaume Lample. Côté recrutement, les talents d’ingénieur sont nombreux, mais le marketing est plus difficile à recruter.","Public Sénat",U.ps),
+  A("Mistral doit grandir vite et rester sous le contrôle de ses fondateurs (75 % du capital est français). Il regrette que le préavis en France soit de trois mois.","Public Sénat",U.ps),
+  0,
+  A("Mistral vient d’ouvrir une filiale aux États-Unis, ce qui l’amène à s’allier avec des fonds américains, plus enclins à prendre des paris à forte conviction.","Public Sénat",U.ps),
+  A("Il prévient que le marché du travail va se transformer en profondeur : beaucoup de métiers de services seront largement modifiés dans les dix ans, et des robots équipés de modèles Mistral pourraient arriver d’ici cinq ans.","Public Sénat",U.ps),
+  0,
+  A("Il recommande de miser sur la créativité et le relationnel, car les tâches procédurales seront peu à peu remplacées par des machines.","Public Sénat",U.ps)],
+acces:[A("Entré chez France Télécom en 1998 comme technicien, après l’armée dans les transmissions. Il est passé par la télévision par câble, les réseaux structurants (mobile, WDM, DSLAM), les faisceaux hertziens, la sécurité, la location de fibre noire, puis la gestion de projet."),
+  A("Chef de projet sur le domaine PERA : il déploie les équipements du réseau d’accès très haut débit et remplace les anciens DSLAM (ADSL) par des OLT fibre. Il migre les clients grand public et professionnels et raccorde les sites mobiles sur ces OLT."),
+  A("Faire bénéficier les clients du meilleur service : leur apporter l’ultra haut débit pour accéder à de nouveaux services."),
+  A("En interne : les chargés d’affaires (études), le pôle ADR (routage), la GR (déclaration de l’OLT au DNS, adresse IP, télé-gestion) et le pilotage RR (démontage des anciens équipements). En externe : des prestataires d’installation comme Eiffage et CIRC, qu’il pilote en chef d’orchestre."),
+  A("Il est content de venir au travail : collègues souriants, ambiance bienveillante, on rigole au café. Il aime transmettre. Par le passé : astreintes, travaux de nuit et déplacements dans le Nord-Pas-de-Calais et en Picardie."),
+  A("Environ 50 k€ brut par an, qu’il situe dans la fourchette intermédiaire. Débuts en 1998 à 65 % puis 80 % du SMIC en contrat de qualification, puis au SMIC en CDI."),
+  A("Pas d’opportunité à l’international. Côté évolution, son parcours montre beaucoup de mobilité : technicien, chargé d’affaires, sécurité, négociation, puis gestion de projet."),
+  A("Les réorganisations font un peu peur, avec un passage à vide, mais cela ne dure pas. Les processus lourds freinent parfois par rapport à l’agilité, mais il s’adapte : après 30 ans de changements, il n’est pas inquiet."),
+  A("Penser au client final : grâce au travail de toute l’équipe, les clients accèdent très vite à l’ultra haut débit et à de nouveaux services."),
+  A("Poser des questions, rester curieux et s’intéresser aux réseaux, au pluriel : mobile, fixe, WDM, faisceaux hertziens, satellite, collecte, cœur de réseau.")],
+ cyber:[A("Polytechnicien (X92), ingénieur général de l’armement et docteur en cryptologie, passé par la Défense et les services du Premier ministre avant de diriger l’ANSSI de 2014 à 2022.","Communiqué d’Orange",U.or),
+  A("Chief Trust Officer d’Orange depuis le 1er février 2026 : il définit la stratégie de souveraineté et de confiance du groupe.","Communiqué d’Orange",U.or),
+  A("La sécurité numérique est aussi une question de souveraineté : maîtriser ses données et ses infrastructures face à des lois étrangères comme le Cloud Act.","Clubic, 2019",U.cl),
+  A("Il est rattaché à la directrice générale d’Orange, Christel Heydemann, et travaille avec Orange Business et Orange Cyberdefense.","Communiqué d’Orange",U.or),
+  A("À l’ANSSI, il estimait que l’agence avait un rôle d’autorité nationale qu’elle devait assumer.","Clubic, 2019",U.cl),
+  0,
+  A("Son parcours : huit ans à la tête de l’ANSSI, puis Docaposte (groupe La Poste) en 2023, puis Orange en 2026.","Communiqué d’Orange",U.or),
+  A("Il distingue trois grandes menaces : la cybercriminalité, l’espionnage et la menace militaire.","La Gazette",U.lg),
+  0,
+  A("Son message : commencer par les bases de l’hygiène informatique, qui ne demandent pas de gros moyens.","La Gazette",U.lg)]
+};
+const WHO = {collecte:"Maxime Heraut", reseau:"Octave Klaba", ml:"Arthur Mensch", acces:"Charlie Lefevre", cyber:"Guillaume Poupard"};
+const ORDER = ["collecte","reseau","ml","acces","cyber"];
+const IRL = ["collecte","acces"];   // professionnels vus en personne
+const link = (l,u) => `<a href="${u}" target="_blank" rel="noopener">${l}</a>`;
+$("qs").innerHTML = QS.map(([th,q,ob],i) => {
+  const ans = ORDER.filter(id => QA[id][i]).map(id => {
+    const a = QA[id][i], irl = IRL.includes(id);
+    const badge = irl ? `<span class="bd irl">Entretien en personne</span>` : `<span class="bd web">Témoignage internet</span>`;
+    return `<div class="ans" style="--c:${J[id].c}"><div class="ah"><b>${WHO[id]}</b>${badge}</div><p>${a.t}</p>${a.q ? `<blockquote>« ${a.q} »<cite>${link(a.ql, a.qu)}</cite></blockquote>` : ""}<small>${a.u ? "Source : " + link(a.l, a.u) : "Notes d’entretien, reformulées"}</small></div>`;
+  }).join("");
+  const miss = ORDER.filter(id => !QA[id][i]).map(id => WHO[id]).join(", ");
+  return `<section class="q"><span class="qn">Question ${i + 1} sur ${QS.length}, ${th}</span><h3>${q}</h3><p class="obj">Objectif : ${ob}</p><div class="ans-grid">${ans}</div>${miss ? `<p class="miss">Pas de réponse trouvée : ${miss}</p>` : ""}</section>`;
+}).join("");
+const dlg = $("grille");
+$("open").onclick = () => dlg.showModal();
+$("close").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+
+
+/* ===== 6. MENU DES MÉTIERS ===== */
+Object.entries(J).forEach(([id, d]) => {
+  const b = document.createElement("button");
+  b.className = "pick"; b.dataset.id = id; b.style.setProperty("--c", d.c);
+  b.innerHTML = `<b>${d.t}</b><em>${d.v}</em><span>${d.pro} : ${d.n}</span>`;
+  b.onclick = () => select(id);
+  $("picks").appendChild(b);
+});
+
+/* ===== 7. PAGES (onglets) ===== */
+const initials = d => d.ini || d.n.split(" ").map(w => w[0]).join("").slice(0, 2);
+
+// Vidéos YouTube : toute source du Web dont le lien est YouTube devient un lecteur.
+// Pour ajouter une vidéo : S("Vidéo", "Titre", "Résumé", "https://www.youtube.com/watch?v=...", "YouTube")
+const ytId = u => (u.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/) || [])[1];
+
+// Vignette + bouton lecture. Au clic : lecteur intégré si le site est en ligne,
+// sinon ouverture sur YouTube (l’intégration échoue en fichier local, erreur 153).
+const videoCard = s => `
+  <article class="src vsrc">
+    <div class="vbox" data-vid="${ytId(s.u)}">
+      <button type="button" class="vplay" aria-label="Lire la vidéo : ${s.t}">
+        <img src="https://i.ytimg.com/vi/${ytId(s.u)}/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span>
+      </button>
+    </div>
+    <span class="kind">${s.k}</span>
+    <h3><a href="${s.u}" target="_blank" rel="noopener">${s.t}</a></h3>
+    <p>${s.s}</p><small>${s.h}</small>
+  </article>`;
+
+const articleCard = s => `<article class="src"><span class="kind">${s.k}</span><h3><a href="${s.u}" target="_blank" rel="noopener">${s.t}</a></h3><p>${s.s}</p><small>${s.h}</small></article>`;
+
+const views = {
+  // Page 1
+  synthese: d => `
+    <div class="pay"><strong>${d.sal[0]}</strong><span>${d.sal[1]}</span></div>
+    <div class="facts">${d.f.map(([h, t]) => `<div><h3>${h}</h3><p>${t}</p></div>`).join("")}</div>`,
+
+  // Page 2
+  web: d => d.web.filter(x => ytId(x.u)).map(videoCard).join("")      // vidéos d’abord
+          + d.web.filter(x => !ytId(x.u)).map(articleCard).join("")
+          || `<p class="empty">${d.webNote}</p>`,
+
+  // Page 3
+  pro: d => {
+    if (!d.steps) return `<div class="vision"><div class="mono" aria-hidden="true">${initials(d)}</div><h3>${d.n}</h3><p class="rl">${d.r}</p>${d.bio.map(p => `<p>${p}</p>`).join("")}<p class="empty">Informations tirées d’interviews et d’articles publics (voir la page Web).</p></div>`;
+    const portrait = d.photo ? `<img src="${d.photo}" alt="Portrait de ${d.n}">` : `<div class="mono" aria-hidden="true">${initials(d)}</div>`;
+    const quote = ([q, l, u]) => `<blockquote class="quote"><p>« ${q} »</p><cite>${u ? "Source : " + link(l, u) : l}</cite></blockquote>`;
+    return `
+    <div class="who">
+      ${portrait}
+      <div><h3>${d.n}</h3><p>${d.r}</p><p class="empty">${d.tag}</p>${d.link ? `<a href="${d.link}" target="_blank" rel="noopener">Voir son profil LinkedIn</a>` : ""}</div>
+    </div>
+    <div class="cols">
+      <div><h4>Son parcours</h4><ol class="steps">${d.steps.map(x => `<li>${x}</li>`).join("")}</ol></div>
+      <div><h4>${d.ft}</h4><ul class="list">${d.facts.map(x => `<li>${x}</li>`).join("")}</ul></div>
+    </div>
+    ${d.quotes ? `<div class="said"><h4>Dans ses mots</h4>${d.quotes.map(quote).join("")}</div>` : ""}
+    <div class="note"><h4 class="ui" style="margin-bottom:6px">${d.note[0]}</h4><p>${d.note[1]}</p></div>
+    ${d.srcs ? `<p class="srcs">Sources : ${d.srcs.map(([l, u]) => link(l, u)).join(", ")}</p>` : ""}`;
+  },
+
+  // Page 2 (à la place de Web) : CV, audio, schémas, liens (seulement si d.docs existe)
+  docs: d => {
+    const o = d.docs, first = d.n.split(" ")[0];
+    const slot = (title, hint) => `<div class="slot"><b>${title}</b><p>${hint}</p></div>`;
+    let h = "";
+    if ("cv" in o) h += `<section class="doc"><h3>Curriculum vitae</h3>` + (o.cv
+      ? `<p>CV de ${d.n}.</p><a class="dl" href="${o.cv}" target="_blank" rel="noopener">Ouvrir le CV (PDF)</a><a class="dl alt" href="${o.cv}" download>Télécharger</a>`
+      : slot("Emplacement du CV de " + d.n, "Déposez le PDF dans <code>assets/cv/</code>, puis écrivez son chemin dans <code>docs.cv</code> de ce profil.")) + `</section>`;
+    if ("audio" in o) h += `<section class="doc"><h3>Enregistrement de l’entretien</h3>` + (o.audio
+      ? `<p>Entretien avec ${d.n}.</p><audio controls preload="none" src="${o.audio}">Votre navigateur ne lit pas l’audio.</audio>`
+      : slot("Emplacement de l’audio", "Déposez le fichier (mp3, m4a…) dans <code>assets/audio/</code>, puis écrivez son chemin dans <code>docs.audio</code> de ce profil.")) + `</section>`;
+    if (o.show && o.show.length) h += `<section class="doc"><h3>Ce que ${first} voulait nous montrer</h3><p>Deux schémas d’architecture réseau issus de ses documents. Cliquez pour agrandir.</p><div class="shows">${o.show.map(x => `
+      <figure><button type="button" class="zoom" data-src="${x.src}" data-cap="${x.title}"><img src="${x.src}" alt="${x.title}" loading="lazy"></button><figcaption><b>${x.title}</b>${x.text}</figcaption></figure>`).join("")}</div></section>`;
+    if (o.links && o.links.length) h += `<section class="doc"><h3>Liens</h3><ul>${o.links.map(([l, u]) => `<li>${link(l, u)}</li>`).join("")}</ul></section>`;
+    return h;
+  }
+};
+
+/* ===== 8. AFFICHAGE ===== */
+function render(animate) {
+  const d = J[job];
+  // Documents remplace Web pour les pros sans sources internet
+  if (tab === "docs" && !d.docs) tab = "web";
+  if (tab === "web" && d.docs) tab = "docs";
+  sheet.style.setProperty("--c", d.c);
+  $("title").textContent = d.t; $("ic").innerHTML = IC[job];
+  $("who").textContent = `${d.pro} : ${d.n}, ${d.r}`;
+  document.querySelectorAll(".pick").forEach(b => b.setAttribute("aria-pressed", b.dataset.id === job));
+  document.querySelectorAll(".tabs button").forEach(b => {
+    b.setAttribute("aria-selected", b.dataset.tab === tab);
+    if (b.dataset.tab === "docs") b.hidden = !d.docs;
+    if (b.dataset.tab === "web") b.hidden = !!d.docs;
+  });
+  try { history.replaceState(null, "", `#${job}/${tab}`); } catch (e) {}   // lien partageable
+  const set = () => { content.innerHTML = views[tab](d); content.style.opacity = 1; };
+  if (animate) { content.style.opacity = 0; setTimeout(set, 130); } else set();
+}
+function select(id) {
+  job = id; render(true);
+  if (window.innerWidth <= 900) sheet.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => { tab = b.dataset.tab; render(true); });
+
+// Lecture de la vidéo
+content.addEventListener("click", e => {
+  const b = e.target.closest(".vplay"); if (!b) return;
+  const id = b.parentElement.dataset.vid;
+  if (location.protocol === "file:") { window.open(`https://www.youtube.com/watch?v=${id}`, "_blank", "noopener"); return; }
+  b.parentElement.innerHTML = `<iframe class="video" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Vidéo YouTube" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+});
+
+// Agrandissement des schémas
+const zoom = $("zoom");
+content.addEventListener("click", e => {
+  const z = e.target.closest(".zoom"); if (!z) return;
+  $("zimg").src = z.dataset.src; $("zimg").alt = z.dataset.cap; $("zcap").textContent = z.dataset.cap;
+  zoom.showModal();
+});
+$("zclose").onclick = () => zoom.close();
+zoom.addEventListener("click", e => { if (e.target === zoom) zoom.close(); });
+
+// Puces de l’en-tête et lien direct (#acces/pro)
+$("stats").innerHTML = [[ORDER.length + " métiers", "#6FA8FF"], [ORDER.length + " professionnels", "#B79CFF"], [IRL.length + " entretiens en personne", "#5ED08A"]]
+  .map(([t, c]) => `<li style="--c:${c}">${t}</li>`).join("");
+const [h1, h2] = location.hash.slice(1).split("/");
+if (J[h1]) job = h1;
+if (["synthese", "web", "pro", "docs"].includes(h2)) tab = h2;
+render(false);
+</script>
+</body>
+</html>
